@@ -17,8 +17,8 @@ export async function POST(req: Request) {
     }
   );
   const data = await res.json();
-  const rate = [1 / data.rates[from], 1 / data.rates[to]];
-  const convert = (rate[0] / rate[1]) * amount;
+  const rates = [1 / data.rates[from], 1 / data.rates[to]];
+  const convert = (rates[0] / rates[1]) * amount;
   const result = Math.round(convert * 100) / 100;
 
   return NextResponse.json({ from, amount, to, result });
